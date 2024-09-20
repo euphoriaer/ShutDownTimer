@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(定时关机));
             shutDownTimeH = new TextBox();
             label1 = new Label();
             shutDownBtn = new Button();
@@ -120,6 +121,8 @@
             Controls.Add(shutDownBtn);
             Controls.Add(label1);
             Controls.Add(shutDownTimeH);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "定时关机";
             Text = "定时关机";
             ResumeLayout(false);

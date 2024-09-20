@@ -22,6 +22,7 @@ namespace ShutDown
             InitializeComponent();
             cur = SynchronizationContext.Current;
             remainTime.Visible = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
         public bool IsShutDown
