@@ -1,4 +1,4 @@
-﻿namespace ShutDown
+namespace ShutDown
 {
     partial class 定时关机
     {
@@ -37,6 +37,7 @@
             shutDownTimeM = new TextBox();
             shutDownTimeS = new TextBox();
             label3 = new Label();
+            closeAppBtn = new Button();
             SuspendLayout();
             // 
             // shutDownTimeH
@@ -57,10 +58,10 @@
             // 
             // shutDownBtn
             // 
-            shutDownBtn.Font = new Font("Microsoft YaHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            shutDownBtn.Location = new Point(86, 130);
+            shutDownBtn.Font = new Font("Microsoft YaHei UI", 15F);
+            shutDownBtn.Location = new Point(12, 130);
             shutDownBtn.Name = "shutDownBtn";
-            shutDownBtn.Size = new Size(250, 64);
+            shutDownBtn.Size = new Size(177, 64);
             shutDownBtn.TabIndex = 2;
             shutDownBtn.Text = "关机";
             shutDownBtn.UseVisualStyleBackColor = true;
@@ -69,12 +70,12 @@
             // remainTime
             // 
             remainTime.AutoSize = true;
-            remainTime.Font = new Font("Microsoft YaHei UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            remainTime.Font = new Font("Microsoft YaHei UI", 15F);
             remainTime.Location = new Point(47, 24);
             remainTime.Name = "remainTime";
-            remainTime.Size = new Size(312, 27);
+            remainTime.Size = new Size(272, 27);
             remainTime.TabIndex = 3;
-            remainTime.Text = "距离关机还剩：1小时45分钟45秒";
+            remainTime.Text = "计时还剩：1小时45分钟45秒";
             // 
             // label2
             // 
@@ -108,11 +109,23 @@
             label3.TabIndex = 9;
             label3.Text = "秒";
             // 
+            // closeAppBtn
+            // 
+            closeAppBtn.Font = new Font("Microsoft YaHei UI", 15F);
+            closeAppBtn.Location = new Point(216, 130);
+            closeAppBtn.Name = "closeAppBtn";
+            closeAppBtn.Size = new Size(177, 64);
+            closeAppBtn.TabIndex = 10;
+            closeAppBtn.Text = "定时关软件";
+            closeAppBtn.UseVisualStyleBackColor = true;
+            closeAppBtn.Click += 定时关软件_Click;
+            // 
             // 定时关机
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(423, 223);
+            Controls.Add(closeAppBtn);
             Controls.Add(label3);
             Controls.Add(shutDownTimeS);
             Controls.Add(shutDownTimeM);
@@ -139,5 +152,6 @@
         private TextBox shutDownTimeM;
         private TextBox shutDownTimeS;
         private Label label3;
+        private Button closeAppBtn;
     }
 }

@@ -11,7 +11,7 @@ namespace ShutDown
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new 定时关机());
+            Application.Run(new 瀹氭椂鍏虫満());
         }
     }
 }
