@@ -119,6 +119,14 @@ namespace ShutDown
             ShutdownComputer();
             MessageBox.Show("倒计时结束！正在关闭计算机...");
         }
+
+        private void ReStartWindowsCallback(Object state)
+        {
+            Console.WriteLine($"计时器触发时间: {DateTime.Now}");
+            shutDownBtn_Click(null, null);
+            RestartComputer();
+            MessageBox.Show("倒计时结束！正在重启计算机...");
+        }
         private void CloseExeCallback(Object state)
         {
             Console.WriteLine($"计时器触发时间: {DateTime.Now}");
@@ -171,6 +179,38 @@ namespace ShutDown
             }
         }
 
+        private void RestartComputer()
+        {
+
+            try
+            {
+                using (Process process = new Process())
+                {
+                    var command = "shutdown -r -t 1";
+                    process.StartInfo.FileName = "cmd.exe";
+                    process.StartInfo.WorkingDirectory = "C:\\";
+                    process.StartInfo.RedirectStandardInput = true;
+                    //process.StartInfo.RedirectStandardOutput = true;
+                    //process.StartInfo.UseShellExecute = false;
+                    //process.StartInfo.CreateNoWindow = true;
+
+                    process.Start();
+
+                    using (System.IO.StreamWriter sw = new System.IO.StreamWriter(process.StandardInput.BaseStream))
+                    {
+                        sw.WriteLine(command);
+                        sw.WriteLine("exit");
+                    }
+                    // 获取cmd的输出
+                    // 打印输出结果
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"关闭计算机失败：{ex.Message}");
+            }
+        }
         public static Process OpenExe()
         {
             // 创建 OpenFileDialog 实例
@@ -295,6 +335,70 @@ namespace ShutDown
                     labShowTimer = null;
                 }
             }
+        }
+
+        private void 定时重启_click(object sender, EventArgs e)
+        {
+
+            IsShutDown = !isShutDown;
+            if (IsShutDown)
+            {
+                shutDownBtn.Text = "取消";
+                closeAppBtn.Text = "取消";
+                int hour = 0;
+                int min = 0;
+                int second = 0;
+                //定时关机
+                if (!string.IsNullOrEmpty(shutDownTimeH.Text))
+                {
+                    hour = int.Parse(shutDownTimeH.Text);
+                }
+                if (!string.IsNullOrEmpty(shutDownTimeM.Text))
+                {
+                    min = int.Parse(shutDownTimeM.Text);
+                }
+                if (!string.IsNullOrEmpty(shutDownTimeS.Text))
+                {
+                    second = int.Parse(shutDownTimeS.Text);
+                }
+
+                countdownTimeSpan = new TimeSpan(0, (int)hour, (int)min, (int)second);
+
+                remainingTime = countdownTimeSpan;
+                isCountdownRunning = true;
+
+
+                timer = new Timer(ReStartWindowsCallback, null, countdownTimeSpan, TimeSpan.FromSeconds(1));
+                labShowTimer = new Timer(TimerShow, null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
+                closeTime = DateTime.Now;
+                TimerShow(null);
+            }
+            else
+            {
+                //取消定时关机
+
+                cur.Send((o) =>
+                {
+                    shutDownBtn.Text = "关机";
+                    closeAppBtn.Text = "定时关软件";
+                }, countdownTimeSpan);
+
+
+                if (timer != null)
+                {
+                    timer.Change(Timeout.Infinite, Timeout.Infinite);
+                    timer.Dispose();
+                    timer = null;
+                }
+                if (labShowTimer != null)
+                {
+                    labShowTimer.Change(Timeout.Infinite, Timeout.Infinite);
+                    labShowTimer.Dispose();
+                    labShowTimer = null;
+                }
+            }
+
+
         }
     }
 }

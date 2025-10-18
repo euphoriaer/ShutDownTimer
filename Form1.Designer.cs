@@ -38,11 +38,12 @@ namespace ShutDown
             shutDownTimeS = new TextBox();
             label3 = new Label();
             closeAppBtn = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // shutDownTimeH
             // 
-            shutDownTimeH.Location = new Point(84, 78);
+            shutDownTimeH.Location = new Point(75, 63);
             shutDownTimeH.Name = "shutDownTimeH";
             shutDownTimeH.Size = new Size(54, 23);
             shutDownTimeH.TabIndex = 0;
@@ -50,7 +51,7 @@ namespace ShutDown
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(144, 84);
+            label1.Location = new Point(135, 69);
             label1.Name = "label1";
             label1.Size = new Size(20, 17);
             label1.TabIndex = 1;
@@ -59,9 +60,9 @@ namespace ShutDown
             // shutDownBtn
             // 
             shutDownBtn.Font = new Font("Microsoft YaHei UI", 15F);
-            shutDownBtn.Location = new Point(12, 130);
+            shutDownBtn.Location = new Point(127, 92);
             shutDownBtn.Name = "shutDownBtn";
-            shutDownBtn.Size = new Size(177, 64);
+            shutDownBtn.Size = new Size(145, 33);
             shutDownBtn.TabIndex = 2;
             shutDownBtn.Text = "关机";
             shutDownBtn.UseVisualStyleBackColor = true;
@@ -80,7 +81,7 @@ namespace ShutDown
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(230, 84);
+            label2.Location = new Point(221, 69);
             label2.Name = "label2";
             label2.Size = new Size(20, 17);
             label2.TabIndex = 6;
@@ -88,14 +89,14 @@ namespace ShutDown
             // 
             // shutDownTimeM
             // 
-            shutDownTimeM.Location = new Point(170, 78);
+            shutDownTimeM.Location = new Point(161, 63);
             shutDownTimeM.Name = "shutDownTimeM";
             shutDownTimeM.Size = new Size(54, 23);
             shutDownTimeM.TabIndex = 7;
             // 
             // shutDownTimeS
             // 
-            shutDownTimeS.Location = new Point(256, 78);
+            shutDownTimeS.Location = new Point(247, 63);
             shutDownTimeS.Name = "shutDownTimeS";
             shutDownTimeS.Size = new Size(54, 23);
             shutDownTimeS.TabIndex = 8;
@@ -103,7 +104,7 @@ namespace ShutDown
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(316, 84);
+            label3.Location = new Point(307, 69);
             label3.Name = "label3";
             label3.Size = new Size(20, 17);
             label3.TabIndex = 9;
@@ -112,19 +113,31 @@ namespace ShutDown
             // closeAppBtn
             // 
             closeAppBtn.Font = new Font("Microsoft YaHei UI", 15F);
-            closeAppBtn.Location = new Point(216, 130);
+            closeAppBtn.Location = new Point(127, 131);
             closeAppBtn.Name = "closeAppBtn";
-            closeAppBtn.Size = new Size(177, 64);
+            closeAppBtn.Size = new Size(145, 37);
             closeAppBtn.TabIndex = 10;
             closeAppBtn.Text = "定时关软件";
             closeAppBtn.UseVisualStyleBackColor = true;
             closeAppBtn.Click += 定时关软件_Click;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Microsoft YaHei UI", 15F);
+            button1.Location = new Point(127, 174);
+            button1.Name = "button1";
+            button1.Size = new Size(145, 37);
+            button1.TabIndex = 11;
+            button1.Text = "定时重启";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += 定时重启_click;
             // 
             // 定时关机
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(423, 223);
+            Controls.Add(button1);
             Controls.Add(closeAppBtn);
             Controls.Add(label3);
             Controls.Add(shutDownTimeS);
@@ -153,5 +166,6 @@ namespace ShutDown
         private TextBox shutDownTimeS;
         private Label label3;
         private Button closeAppBtn;
+        private Button button1;
     }
 }
